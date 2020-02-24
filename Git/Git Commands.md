@@ -10,8 +10,6 @@
 >
 >2020/01/20    添加pull，push命令
 
-
-
 ## 简单描述
 
 git每次提交更新会对当时的文件制作一个快照，并保存该快照的索引，未改变的文件则会保留一个链接指向之前的文件。
@@ -30,15 +28,11 @@ git管理下也相应有三种不同区域：
 
 `HEAD`特殊指针，指向当前所在的本地分支
 
-
-
 ## 版本控制
 
 #### *git init*
 
 在当前目录新建git版本库
-
-
 
 #### *git clone*
 
@@ -56,8 +50,6 @@ git clone ftp[s]://host.xz[:port]/path/to/repo.git/
 git clone [user@]host.xz:path/to/repo.git/
 ```
 
-
-
 #### *git add*
 
 将文件的改动/新增/移除状态变化添加到暂存区
@@ -72,8 +64,6 @@ git add *.c
 git add dir
 # <pathspec>为目录时，会添加指定目录下所有文件状态变化
 ```
-
-
 
 #### *git commit*
 
@@ -95,8 +85,6 @@ git commit --verbose
 # 在commit输出信息的底部显示暂存区文件和当前分支顶端文件的差别
 ```
 
-
-
 #### *git rm*
 
 将文件工作区和索引中同时删除，近似于先`/bin/rm`再`git add .`
@@ -112,10 +100,6 @@ git rm -r <file>
 git rm --cached <file>
 # 使用该参数会将文件从索引中删除(包括暂存状态)，但工作区文件保留
 ```
-
-
-
-
 
 #### *git diff*
 
@@ -137,8 +121,6 @@ git diff <commit> <commit> [<path>...]
 git diff --stat
 # 显示文件改动的总结(多少文件改变，几条增加，几条减少)
 ```
-
-
 
 #### *git restore*
 
@@ -178,8 +160,6 @@ git reset [<mode>] [<commit>]
 --hard
 # 同时重置暂存区和工作区
 ```
-
-
 
 #### *git log*
 
@@ -245,8 +225,6 @@ reference
 # <abbrev hash> (<title line>, <short author date>)
 ```
 
-
-
 *git revert \<commit\>*
 
 通过创建一次新的commit，还原指定commit的改动
@@ -260,8 +238,6 @@ git revert HEAD~3
 git revert -n master~5..master~2
 # 还原master分支过去第5次commit到过去第2次commit所造成的改动
 ```
-
-
 
 ## 分支管理
 
@@ -301,8 +277,6 @@ git show-branch
 # 列出所有分支(包括远程分支信息)
 ```
 
-
-
 #### *git checkout*
 
 切换分支或者恢复工作区域文件
@@ -318,8 +292,6 @@ git checkout -B <new_branch> [<start point>] # 已存在的分支会被重置覆
 # 创建新的分支，并切换到新的分支下
 ```
 
-
-
 #### *git switch*
 
 切换分支
@@ -327,8 +299,6 @@ git checkout -B <new_branch> [<start point>] # 已存在的分支会被重置覆
 ```shell
 git switch <branch>
 ```
-
-
 
 #### *git merge*
 
@@ -349,10 +319,6 @@ git merge --abort
 # 造成合并冲突时，中止合并的指令
 ```
 
-
-
-
-
 #### *git stash*
 
 将当前工作区域的改动暂时藏起来
@@ -370,8 +336,6 @@ git stash pop [<stash>]
 git stash apply [<stash>]
 git stash clear
 ```
-
-
 
 #### *git tag*
 
@@ -395,8 +359,6 @@ git tag -l <pattern>
 git tag -n<num>
 ```
 
-
-
 ## 远程开发
 
 #### *git remote*
@@ -416,8 +378,6 @@ git remote rename <old> <new>
 git remote show
 # 显示更多的相关信息
 ```
-
-
 
 #### *git fetch*
 
@@ -448,9 +408,7 @@ git pull --rebase
 # 执行git rebase而非git merge
 ```
 
-
-
-#### *git push*
+### *git push*
 
 更新远程仓库
 
@@ -462,8 +420,6 @@ git push -f
 git push --force
 # 通常，push命令会拒绝更新不是本地仓库祖先的远程仓库，加上该参数会进行强制推送
 ```
-
-
 
 #### *git rebase*
 
@@ -478,11 +434,9 @@ git rebase --skip
 git rebase --abort
 ```
 
-
-
 ## 常见问题
 
-#### 大致通用的参数选项
+### 大致通用的参数选项
 
 ```shell
 -q | --quiet
@@ -492,9 +446,7 @@ git rebase --abort
 # 显示更加详细的信息
 ```
 
-
-
-#### ssh配置
+### ssh配置
 
 ```shell
 git config --global user.name "your name"
@@ -507,4 +459,3 @@ ssh-keygen -o -t rsa -b 4096 -C "email@example.com"
 # id_rsa.pub
 # 把公钥上传到github或gitlab
 ```
-
