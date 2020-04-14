@@ -1,59 +1,66 @@
-# git 开发模型
+# git work flow
 
 ## git flow
+
+Vincent Driessen 在2010年提出一种git的开发模型, 很快成为了最流行的git团队协作开发流程.
 
 ### git flow 分支描述
 
 master
 
-git flow模型的master分支表现为产品发布的状态, 每一个commit都代表一个可以发布的版本
+master分支是git flow模型的主分支, master分支的HEAD代表了可发布的产品状态, 每一个合并的commit都代表了一个可发布的版本
 
 develop
 
-开发分支包含了当前正在开发的新特性
+develop分支是开发分支, 同样也是一个长期存在的分支. develop分支的HEAD代表了下次发布的一个最新特性开发改动
 
 feature
 
-从develop分支开出feature分支, 开发完成后, 合进develop分支
+feature分支从develop分支开出, 新特性开发完成后合并回到develop分支, 代表为下一次发布增加一个新的特性
 
 release
 
-当一次新特性开发完成后, 从develop分支开出一个release分支, 部署后在其上进行测试, 此时不再添加新特性, 只进行bug的修复
+release分支从develop分支开出, 测试, 修复bug完成后合并到develop和master分支. 当一个版本的开发达到一个相对稳定的状态, 从develop分支开出一个新的release分支.
 
 hotfix
 
-当线上版本出现问题, 从master分支开出hotfix分支, 修复完成后, 同时合进develop和master分支
+release分支从master分支开出, 问题修复完成后合并到develop和master分支. 当线上版本出现问题, 会紧急开出一个hotfix分支进行问题修复.
 
 ### git flow 流程描述
 
-团队维持2个主要分支: master & develop.
+团队会维持2个长期的主要分支: master & develop.
 
-每当有新需求, 有新特性需要开发, 从develop分支开出feature分支, 由开发人员在feature分支进行开发, 对于本次发布要发布的新特性, feature分支需要在规定期限内开发完成, 合并进develop分支.
-
-当本次所有新特性开发完成, 合并进develop分支后, 从develop分支开出release分支, 此后不再向release分支做任何新特性的添加或修改, 只在relase分支上进行bug的修复, bug修复完同样要同步到develop分支. 当测试没问题, release分支稳定下来, 即准备将release分支合并进master分支, 进行一次新版本的发布.
-
-当线上出现问题时, 要从master分支紧急开出一个hotfix分支, 进行修复, 测试, 完成后合并到master和develop分支.
+新版本开发:
+    开发人员从develop分支开出多个feature分支, 根据需求进行开发, 当特性开发完成后, 将feature分支合并到develop分支. 当下次版本发布所要求的新特性都开发完成后, 从develop分支开出一条release分支, 之后不会再有任何特性的改动, 只进行bug的修复. 在release分支上进行测试, bug修复, 当测试完成后, 将release分支合并到develop分支和master分支, 进行发布.
 
 ### git flow 存在问题
 
-WIP
+- 复杂度
 
 ## github flow
+
+github flow是github所推荐的work flow, 在github上广泛应用于开源项目的协作开发
+
+> GitHub flow is a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly.
 
 ### github flow 分支描述
 
 master
 
-只存在1条主要分支, 即master, 以tag的形式代表版本发布
+github flow只存在一条主要分支, master. 通过打上tag的方法标记特定的版本.
 
 feature/fix
 
-无论是新特性还是bug修复, 都直接从master分支开出, 然后合并回master分支
+新特性开发/bug修复, 都是从master分支开出, 开发完成后合并回到master分支.
 
 ### github flow 流程描述
 
+github flow工作的主要流程如下.
 
+从master分支新建分支, 进行新特性的开发, 当开发完成后提交pull request(PR), 这时候所有人都可以看到并对代码做出评论, 开发者可以根据反馈继续进行开发, 新的commit也会反映在PR上. 当一次PR经过了code review, 可以将当前PR的最新提交部署到一个临时环境中进行验证, 一般会返回所部署临时环境的URL地址.
 
 ## gitlab flow
 
 <https://docs.gitlab.com/ee/topics/gitlab_flow.html>
+
+### gitlab flow 分支描述

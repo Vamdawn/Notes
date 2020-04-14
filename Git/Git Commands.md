@@ -377,6 +377,9 @@ git remote rename <old> <new>
 
 git remote show
 # 显示更多的相关信息
+
+git remote remove <name>
+# 删除与指定远程仓库的关联
 ```
 
 #### *git fetch*
@@ -408,7 +411,7 @@ git pull --rebase
 # 执行git rebase而非git merge
 ```
 
-### *git push*
+####*git push*
 
 更新远程仓库
 
@@ -432,6 +435,21 @@ git rebase [<upstream> [<branch>]]
 git rebase --continue
 git rebase --skip
 git rebase --abort
+```
+
+### 其他命令
+
+#### *git config*
+
+```shell
+git config --global name value	# 全局级别参数设置
+git config --local name value	# 仓库级别参数设置
+
+# 显示当前的参数
+git config -l
+git config --list
+
+git config --get name		# 获取指定参数的值
 ```
 
 ## 常见问题
