@@ -378,6 +378,9 @@ git remote rename <old> <new>
 git remote show
 # 显示更多的相关信息
 
+git remote set-url <name> <url>
+# 修改指定远程仓库绑定的url
+
 git remote remove <name>
 # 删除与指定远程仓库的关联
 ```
